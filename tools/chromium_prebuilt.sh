@@ -45,7 +45,7 @@ if [ -d $TARGET_DIR ]; then
     cp $TARGET_DIR/system/lib/libwebviewchromium.so $PREBUILT_DIR/lib/libwebviewchromium.so
     cp $TARGET_DIR/system/lib/libwebviewchromium_plat_support.so $PREBUILT_DIR/lib/libwebviewchromium_plat_support.so
     cp $TARGET_DIR/system/lib/libwebviewchromium_loader.so $PREBUILT_DIR/lib/libwebviewchromium_loader.so
-    cp $TARGET_DIR/../../common/obj/JAVA_LIBRARIES/android_webview_java_intermediates/javalib.jar $PREBUILT_DIR/android_webview_java.jar
+    cp $TARGET_DIR/system/etc/NOTICE.html.gz $PREBUILT_DIR/etc/NOTICE.html.gz
 else
     echo "Please ensure that you have ran a full build prior to running this script!"
     return 1;
@@ -101,13 +101,14 @@ LOCAL_PATH := prebuilts/chromium/__DEVICE__/
 
 PRODUCT_COPY_FILES += \\
     \$(LOCAL_PATH)/app/webview/webview.apk:system/app/webview/webview.apk \\
+    \$(LOCAL_PATH)/etc/NOTICE.html.gz:system/etc/NOTICE.html.gz \\
     \$(LOCAL_PATH)/lib/libwebviewchromium.so:system/lib/libwebviewchromium.so \\
     \$(LOCAL_PATH)/lib/libwebviewchromium_plat_support.so:system/lib/libwebviewchromium_plat_support.so \\
     \$(LOCAL_PATH)/lib/libwebviewchromium_loader.so:system/lib/libwebviewchromium_loader.so
 
 
-\$(shell mkdir -p out/target/product/__DEVICE__/system/app/webview/lib/arm/)
-\$(shell cp -r \$(LOCAL_PATH)/app/webview/lib/arm/libwebviewchromium.so out/target/product/__DEVICE__/system/app/webview/lib/arm/libwebviewchromium.so)
+\$(shell mkdir -p \$(OUT_DIR)/target/product/__DEVICE__/system/app/webview/lib/arm/)
+\$(shell cp -r \$(LOCAL_PATH)/app/webview/lib/arm/libwebviewchromium.so \$(OUT_DIR)/target/product/__DEVICE__/system/app/webview/lib/arm/libwebviewchromium.so)
 
 EOF
 
