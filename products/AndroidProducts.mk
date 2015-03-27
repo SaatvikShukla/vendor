@@ -27,3 +27,7 @@ endif
 ifeq (optipop_manta,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/optipop_manta.mk
 endif
+
+ifeq (optipop_togari,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/optipop_togari.mk
+endif
